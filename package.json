@@ -1,0 +1,28 @@
+{
+  "name": "eventful",
+  "version": "1.0.0",
+  "description": "Eventful is a simple event discovery and ticketing platform for concerts, theater, sports, and cultural experiences.",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "Keven Fonseca",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^25.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5"
+  }
+}
