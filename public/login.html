@@ -1,0 +1,25 @@
+<style>
+    /* ... (Copiar o :root da resposta anterior) ... */
+    .auth-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .auth-card { background: var(--bg-card); padding: 2rem; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    .tabs { display: flex; margin-bottom: 2rem; border-bottom: 1px solid #334155; }
+    .tab { flex: 1; text-align: center; padding: 10px; cursor: pointer; color: var(--text-muted); }
+    .tab.active { color: var(--primary); border-bottom: 2px solid var(--primary); font-weight: bold; }
+    input { width: 100%; padding: 12px; margin: 8px 0 20px 0; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 6px; box-sizing: border-box; }
+</style>
+
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="tabs">
+            <div class="tab active" onclick="showLogin()">Login</div>
+            <div class="tab" onclick="showSignup()">Sign Up</div>
+        </div>
+        <form id="auth-form">
+            <label>Email</label>
+            <input type="email" placeholder="exemplo@mail.com" required>
+            <label>Palavra-passe</label>
+            <input type="password" placeholder="••••••••" required>
+            <button class="btn-primary" style="width: 100%">Continuar</button>
+        </form>
+    </div>
+</div>
