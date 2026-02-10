@@ -3,7 +3,7 @@ import { UserModel } from "../users/user.model.js"
 import { generateToken } from "../../utils/jwt.js"
 import { validateDTO } from "../../middlewares/validateDTO.js"
 
-export const register = async (req: Request, res: Response): Promise<Response> => {
+export const signup = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { name, email, password, role } =  req.body
 
@@ -40,7 +40,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 
         return res.status(200).json({ 
             token, 
-            user: {id: user._id, name: user.name }
+            user: {id: user._id, name: user.name, role: user.role }
         })
     
     } catch (error) {
