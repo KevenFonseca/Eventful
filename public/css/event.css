@@ -1,0 +1,102 @@
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    padding: 0 5%;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border);
+    opacity: 0.9;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ */
+.events {
+    padding: 8rem 5%;
+}
+
+/* ------------------------------------------------------------ */
+/* EVENT CARD */
+
+.card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    border: 2px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-tag {
+    color: var(--secondary);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.card-description {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    flex-grow: 1;
+}
+
+.card-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    font-size: 1.2rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card-tickets {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.card-price {
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.card-button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background: var(--secondary);
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/event.css">
+    <title>Evento - Eventful</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">← back</a>
+        <div class="user-area" id="user-area">
+            <div class="user-initials">KF</div>
+        </div>
+    </header>
+
+    <main>
+       <div class="events" id="event-details">
+            <div class="card">
+                <span class="card-tag">Tecnologia</span>
+                <h3 class="card-title">Tech Conference Cabo Verde</h3>
+                <p class="card-description">
+                    Um evento imperdível sobre inovação, startups e desenvolvimento de software.
+                </p>
+
+                <div class="card-info">
+                    <p class="card-location">📍 Mindelo</p>
+                    <p class="card-date">📅 20 de Março</p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="card-tickets">🎟️ 200 bilhetes disponíveis</div>
+                    <div class="card-price">Gratuito</div>
+                    <button class="card-button" id="register-btn">Inscrever-se</button>
+                    <!-- <a href="login.html" class="card-button" id="login-btn">Log in to register</a> -->
+                </div>
+                <div class="card-participants">
+                    <h3>Participantes:</h3>
+                    <p>Sem participantes ainda</p>
+                    <ul id="participants-list">
+                        <!-- Lista de participantes será preenchida dinamicamente -->
+                        <li>Keven Fonseca (minora@gmail.com)</li>
+                        <li>Ana Luiza (luana@gmail.com)</li>
+                        <li>Goby lein (gogo@gmail.com)</li>
+                    </ul>
+            </div>
+       </div> 
+    </main>
+
+    <!-- scripts -->
+    <script src="js/auth-ui.js"></script>
+    <script type="module" src="js/event-details.js"></script>
+</body>
+</html>

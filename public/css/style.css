@@ -1,0 +1,87 @@
+/* ------------------------------------------------------------ */ 
+/* COLOR VAR */
+:root {
+  --primary: #6366f1;       
+  --secondary: #f97316;     
+  --bg-dark: #0f172a;       
+  --bg-card: #1e293b;      
+  --text-main: #f8fafc;     
+  --text-muted: #94a3b8;
+  --border: #334155;   
+  --success: #22c55e;       
+}
+
+/* ------------------------------------------------------------ */
+/* MAIN SET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* ------------------------------------------------------------ */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.4rem;
+}
+
+.user-area a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.user-area a:hover {
+    color: var(--secondary);
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+}
+
+.btn-primary:link, .btn-primary:visited {
+    border: 2px solid var(--primary)
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background: var(--primary);
+    color: #fff;
+    border: 2px solid var(--primary);
+}
+
+.logout-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.user-initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}

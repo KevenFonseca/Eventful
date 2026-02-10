@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/create-event.css">
+    <title>Create Event - Eventful</title>
+</head>
+<body>
+    
+    <header>
+        <a href="index.html" class="logo">← back</a>
+        <div class="user-area" id="user-area">
+            <div class="user-initials">KF</div>
+        </div>
+    </header>
+
+    <main>
+        <h2>Create New Event</h2>
+        <form id="create-event-form">
+            <label for="title">Event Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <!-- CATEGORY -->
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="Technology">Technology</option>
+                <option value="Education">Education</option>
+                <option value="Business">Business</option>
+                <option value="Health">Health</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Sports">Sports</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <!-- Custom category (hidden by default) -->
+            <div id="custom-category-container" style="display: none;">
+                <label for="custom-category">Custom Category</label>
+                <input type="text" id="custom-category" name="customCategory" placeholder="Enter custom category"/>
+            </div>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="price">Price (€)</label>
+            <input type="number" id="price" name="price" min="0" required/>
+
+            <label for="totalTickets">Total Tickets</label>
+            <input type="number" id="totalTickets" name="totalTickets" min="1" required/>
+
+            <button type="submit">Create Event</button>
+        </form>
+    </main>
+
+    <!-- scripts -->
+    <script src="js/auth-ui.js"></script>
+    <script type="module" src="js/create-event.js"></script>
+</body>
+</html>

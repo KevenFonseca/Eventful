@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-events.css">
+    <title>Dashboard - Eventful</title>
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo">Eventful Dashboard</h2>
+        <div class="user-area" id="user-area">
+            <!-- <div class="user-initials">KF</div> -->
+        </div>
+    </header>
+
+    <main>
+        <button class="create-event">Create new event</button>
+        <h3>My Events</h3>
+        <div class="events" id="my-events">
+            <div class="card">
+                <span class="card-tag">Tecnologia</span>
+                <h3 class="card-title">Tech Conference Cabo Verde</h3>
+                <div class="card-info">
+                    <p class="card-location">📍 Mindelo</p>
+                    <p class="card-date">📅 20 de Março</p>
+                </div>
+                <a href="event.html?id=1" class="card-button">Ver Detalhes</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- scripts -->
+    <script src="js/auth-ui.js"></script>
+    <script type="module" src="js/my-events.js"></script>
+</body>
+</html>

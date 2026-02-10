@@ -1,0 +1,85 @@
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    padding: 0 5%;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border);
+    opacity: 0.9;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ */
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 8rem 5%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+label {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-size: 1.4rem;
+}
+
+select {
+    padding: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-size: 1.4rem;
+}
+
+button {
+    align-self: flex-start;
+    margin-top: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: var(--secondary);
+}
