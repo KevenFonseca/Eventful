@@ -23,7 +23,9 @@ function setupUserUI() {
 
     let dashboardLink = ''
     if (role === 'creator') {
-        dashboardLink = '<a href="/my-events.html" class="btn btn-primary">Dashboard</a>'
+        dashboardLink = '<a href="/creator-dashboard.html" class="btn btn-primary">Dashboard</a>'
+    } else {
+        dashboardLink = '<a href="/participant-dashboard.html" class="btn btn-primary">Dashboard</a>'
     }
 
   
