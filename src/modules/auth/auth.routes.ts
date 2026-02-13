@@ -7,9 +7,9 @@ import { loginUserSchema } from "../users/dtos/login-user.dto.js"
 const authRoute = Router()
 
 // Register
-authRoute.post('/auth/signup', validateDTO(createUserSchema), signup)
+authRoute.post('/signup', validateDTO(createUserSchema), signup)
 
 // Login
-authRoute.post('/auth/login', validateDTO(loginUserSchema), login)
+authRoute.post('/login', validateDTO(loginUserSchema), login)
 
 export default authRoute

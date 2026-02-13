@@ -7,15 +7,15 @@ import { UserRole } from "../users/user.types.js"
 const router = Router()
 
 // create event router (Creator)
-router.post('/events', authMiddleware, authorize(UserRole.CREATOR), eventsHandler.createEventHandler)
+router.post('/', authMiddleware, authorize(UserRole.CREATOR), eventsHandler.createEventHandler)
 
 // List all available Events (Public)
-router.get('/events', eventsHandler.getEventsHandler)
+router.get('/', eventsHandler.getEventsHandler)
 
 // List my events (Creator)
-router.get('/events/my-events', authMiddleware, authorize(UserRole.CREATOR), eventsHandler.getMyEventsHandler)
+router.get('/my-events', authMiddleware, authorize(UserRole.CREATOR), eventsHandler.getMyEventsHandler)
 
 // Get event by id (Public)
-router.get('/events/:id', eventsHandler.getEventByIdHandler)
+router.get('/:id', eventsHandler.getEventByIdHandler)
 
 export default router

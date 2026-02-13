@@ -1,11 +1,13 @@
 import {Request, Response} from "express"
 import { UserModel } from "../users/user.model.js"
 import { generateToken } from "../../utils/jwt.js"
-import { validateDTO } from "../../middlewares/validateDTO.js"
+// import { validateDTO } from "../../middlewares/validateDTO.js"
 
 export const signup = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { name, email, password, role } =  req.body
+
+        console.log(req.body)
 
         const exist = await UserModel.findOne({ email })
         if (exist) return res.status(409).json({ error: 'Email already registered' })

@@ -9,8 +9,8 @@ export async function login(email, password) {
         })
 
         localStorage.setItem('token', data.token)
-        localStorage.setItem('userName', data.name)
-        localStorage.setItem('role', data.role)
+        localStorage.setItem('userName', data.user.name)
+        localStorage.setItem('role', data.user.role)
 
         alert('Login successful!')
 
@@ -29,9 +29,9 @@ export async function signup(name, email, password, role) {
             body: JSON.stringify({ name, email, password, role })
         })
 
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('userName', data.name)
-        localStorage.setItem('role', data.role)
+        // localStorage.setItem('token', data.token)
+        // localStorage.setItem('userName', data.name)
+        // localStorage.setItem('role', data.role)
 
         alert('Signup successful!')
 

@@ -1,7 +1,7 @@
 import { fetchData } from './api.js'
 import { requireAuth } from './require-auth.js'
 
-// requireAuth('creator')
+requireAuth('creator')
 
 async function loadMyEvents() {
     try {
@@ -19,9 +19,9 @@ async function loadMyEvents() {
                 <h3 class="card-title">${event.title}</h3>
                 <div class="card-info">
                     <p class="card-location">📍 ${event.location}</p>
-                    <p class="card-date">📅 ${new Date(event.date).toLocaleDateString()}</p>
+                    <p class="card-date">📅 ${new Date(event.date).toLocaleDateString('pt-PT', {timeZone: 'UTC'})}</p>
                 </div>
-                <a href="event.html?id=${event.id}" class="card-button">View Details</a>
+                <a href="event.html?id=${event._id}" class="card-button">View Details</a>
             </div>
         `).join('')
 

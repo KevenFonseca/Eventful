@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:/3000/api'
+const API_URL = 'http://localhost:3000/api'
 
 export async function fetchData(endpoint, options = {}) {
     const token = localStorage.getItem("token")
@@ -15,7 +15,7 @@ export async function fetchData(endpoint, options = {}) {
 
     if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || 'An error occurred')
+        throw new Error(errorData.error || 'An error occurred')
     }
 
     return response.json()

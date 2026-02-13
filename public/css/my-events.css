@@ -55,6 +55,13 @@ h3 {
 }
 
 /* ------------------------------------------------------------ */
+
+.events {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}
+
 /* EVENT CARD */
 
 .card {

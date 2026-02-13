@@ -41,13 +41,16 @@ function renderEvent(event) {
                     <p class="card-date">Date: ${new Date(event.date).toLocaleDateString()}</p>
                 </div>
                 <div class="card-footer">
-                    <div class="card-tickets">Available tickets: ${event.ticketsAvailable}</div>
+                    <div class="card-tickets">Available tickets: ${event.availableTickets}</div>
                     <div class="card-price">${event.price > 0 ? `Price: ${event.price.toFixed(2)}€` : 'Free'}</div>
 
                     ${
-                        token 
-                            ? `<button class="card-button" id="register-btn")">Register</button>` 
-                            : `<a href="login.html" class="card-button" id="login-btn">Log in to register</a>`
+                        role !== 'creator'
+                            ?   (token 
+                                ? `<button class="card-button" id="register-btn")">Register</button>` 
+                                : `<a href="login.html" class="card-button" id="login-btn">Log in to register</a>`
+                                )
+                            :   ''
                     }
                 </div>
                 <div id="participants"></div>
@@ -62,7 +65,7 @@ function renderEvent(event) {
 
 async function registerEvent(eventId) {
     try {
-        await fetchData(`/events/${eventId}/register`, {
+        await fetchData(`/registrations/${eventId}/register`, {
             method: 'POST'
         })
 
@@ -78,20 +81,21 @@ async function registerEvent(eventId) {
 
 async function loadParticipants(eventId) {
     try {
-        const participants = await fetchData(`/events/${eventId}/participants`)
+        const participants = await fetchData(`/registrations/${eventId}/participants`)
         const container = document.getElementById('participants')
 
         container.innerHTML = `
-            <h3>Participants (${participants.length})</h3>
-            ${
-                participants.length === 0
-                    ? '<p>No participants yet.</p>'
-                    : ` <ul>
-                            ${participants.map(p => `<li>${p.name} (${p.email})</li>`).join('')}
-                        </ul>
-                    `
-            }
-            
+            <div class="card-participants">
+                <h3>Participants (${participants.length})</h3>
+                ${
+                    participants.length === 0
+                        ? '<p>No participants yet.</p>'
+                        : ` <ul>
+                                ${participants.map(p => `<li>${p.name} (<span>${p.email}</span>)</li>`).join('')}
+                            </ul>
+                        `
+                }
+            </div>
         `
     } catch (error) {
         console.error(error)

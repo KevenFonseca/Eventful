@@ -1,7 +1,7 @@
 import { fetchData } from "./api.js"
 import { requireAuth } from "./require-auth.js"
 
-// requireAuth('creator')
+requireAuth('creator')
 
 const form = document.getElementById('create-event-form')
 const categorySelect = document.getElementById('category')
@@ -13,7 +13,7 @@ if (!form || !categorySelect || !customCategoryContainer || !customCategoryInput
 }
 
 categorySelect.addEventListener('change', () => {
-    if (categorySelect.value === 'other') {
+    if (categorySelect.value === 'Other') {
         customCategoryContainer.style.display = 'block'
         customCategoryInput.required = true
     } else {
@@ -26,20 +26,23 @@ categorySelect.addEventListener('change', () => {
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
 
-    const category = categorySelect.value === 'other' ? customCategoryInput.value.trim() : categorySelect.value
+    const category = categorySelect.value === 'Other' ? customCategoryInput.value.trim() : categorySelect.value
     const eventData = {
         title: document.getElementById('title').value.trim(),
         description: document.getElementById('description').value.trim(),
         category,
-        date: new Date(document.getElementById('date').value).toISOString(),
+        date: new Date(document.getElementById('date').value),
         location: document.getElementById('location').value.trim(),
         price: parseFloat(document.getElementById('price').value) || 0,
         totalTickets: parseInt(document.getElementById('totalTickets').value)
     }
 
     try {
-        await fetchData('/events/create', 'POST', { ...eventData, availableTickets: eventData.totalTickets })
-        
+        await fetchData('/events', {
+            method: 'POST',
+            body: JSON.stringify(eventData)
+        })
+
         alert('Event created successfully!')
         form.reset()
         customCategoryContainer.style.display = 'none'

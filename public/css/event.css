@@ -100,3 +100,22 @@ header {
 .card-button:hover {
     background: var(--secondary);
 }
+
+.card-participants {
+    border-top: 2px solid var(--bg-dark);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+
+.card-participants ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-participants span {
+    color: var(--secondary)
+}

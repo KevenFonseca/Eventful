@@ -7,7 +7,7 @@ export const validateDTO = (schema: ZodSchema<any>) => {
             schema.parse(req.body)
             next()
         } catch (err: any) {
-            return res.status(400).json({error: 'Invalid input'})
+            return res.status(400).json({error: 'Invalid input', details: err.errors})
         }
     }
 }

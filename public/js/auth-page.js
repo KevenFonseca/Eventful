@@ -31,7 +31,7 @@ form.addEventListener('submit', async (event) => {
             await login(email, password)
         } else {
             const name = form.name.value.trim()
-            const role = form.role.value
+            const role = form.role.value.trim()
 
             if (!name || !role) {
                 alert('Fill in all registration fields')

@@ -38,6 +38,8 @@ main {
 /* HERO SECTION */
 
 .hero {
+    text-align: center;
+    padding: 2rem;
     height: 85vh;
     display: flex;
     flex-direction: column;
@@ -72,6 +74,10 @@ main {
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     padding: 5rem 5%;
+}
+
+.event-grid p {
+    text-align: center;
 }
 
 /* ------------------------------------------------------------ */

@@ -5,7 +5,7 @@ import { CreateEventDTO } from "./dtos/create-event.dto.js"
 export const createEvent = async (data: CreateEventDTO, creatorId: string) => {
     const event = await EventModel.create({
         ...data,
-        date:  new Date(data.date),
+        availableTickets: data.totalTickets,
         creator: new Types.ObjectId(creatorId),
     })
 
@@ -31,7 +31,7 @@ export const getMyEvents = async (creatorId: string) => {
     return EventModel.find({ 
         creator: new Types.ObjectId(creatorId) 
     })
-        .select('-availableTickets -createdAt -updatedAt -__v')
+        .select('-availableTickets -creator -createdAt -updatedAt -__v')
         .sort({ date: 1 })
 }
 
@@ -41,6 +41,6 @@ export const getEventById = async (eventId: string) => {
     }
 
     return EventModel.findById(eventId)
-        .populate('creatorId', 'name email')
+        .populate('creator', 'name email')
         .select('-__v')
 }

@@ -4,6 +4,7 @@ import * as registrationService from "./registration.service.js"
 
 export const createRegistrationHandler = async (req: AuthRequest, res: Response) => {
     try {
+        if (!req.user) return res.status(401).json({ error: 'Unauthorized' })
         const registration = await registrationService.createRegistration(
             req.user!.id,
             req.params.id as string

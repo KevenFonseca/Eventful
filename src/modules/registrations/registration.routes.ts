@@ -7,9 +7,9 @@ import { UserRole } from "../users/user.types.js"
 const router = Router()
 
 // Create registration (Participant)
-router.post('/events/:id/register', authMiddleware, authorize(UserRole.PARTICIPANT), registrationHandler.createRegistrationHandler)
+router.post('/:id/register', authMiddleware, authorize(UserRole.PARTICIPANT), registrationHandler.createRegistrationHandler)
 
 // Get event participants (Creator)
-router.get('/events/:id/participants', authMiddleware, authorize(UserRole.CREATOR), registrationHandler.getEventParticipantsHandler)
+router.get('/:id/participants', authMiddleware, authorize(UserRole.CREATOR), registrationHandler.getEventParticipantsHandler)
 
 export default router
