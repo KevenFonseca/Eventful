@@ -1,6 +1,7 @@
 import { Types } from 'mongoose'
 import { EventModel } from '../events/event.model.js'
 import { RegistrationModel } from './registration.model.js'
+import { v4 as uuidv4 } from 'uuid'
 
 export const createRegistration = async (participantId: string, eventId: string) => {
     if (!Types.ObjectId.isValid(eventId)) throw new Error('Invalid eventId')
@@ -25,7 +26,8 @@ export const createRegistration = async (participantId: string, eventId: string)
         const registration = await RegistrationModel.create(
             [{
                 participant: participantId,
-                event: event._id
+                event: event._id,
+                code: uuidv4()
             }], 
             { session }
         )
@@ -59,4 +61,25 @@ export const getEventParticipants = async (eventId: string, creatorId: string) =
         .sort({ registeredAt: 1 })
 
     return registrations.map(reg => reg.participant)
+}
+
+export const getMyRegistrations = async (participantId: string) => {
+    return RegistrationModel.find({participant: participantId})
+        .populate('event', 'title date location')
+        .select('-code -participant -createdAt -updatedAt -__v')
+        .sort({ createdAt: -1})
+}
+
+export const getRegistrationById = async (registrationId: string, participantId: string) => {
+    if (!Types.ObjectId.isValid(registrationId)) throw new Error('Invalid registrationId')
+
+    const registration = await RegistrationModel.findById(registrationId)
+        .populate('event', 'title date location')
+        .select('-createdAt -updatedAt -__v')
+
+    if (!registration) throw new Error('Registration not found')
+
+    if (registration.participant.toString() !== participantId) throw new Error('Unauthorized')
+
+    return registration
 }

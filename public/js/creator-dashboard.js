@@ -1,5 +1,5 @@
-import { fetchData } from './api.js'
-import { requireAuth } from './require-auth.js'
+import { fetchData } from './utils/api.js'
+import { requireAuth } from './utils/require-auth.js'
 
 requireAuth('creator')
 
@@ -21,7 +21,7 @@ async function loadMyEvents() {
                     <p class="card-location">📍 ${event.location}</p>
                     <p class="card-date">📅 ${new Date(event.date).toLocaleDateString('pt-PT', {timeZone: 'UTC'})}</p>
                 </div>
-                <a href="event.html?id=${event._id}" class="card-button">View Details</a>
+                <a href="event-details.html?id=${event._id}" class="card-button">View Details</a>
             </div>
         `).join('')
 

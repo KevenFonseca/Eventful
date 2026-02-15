@@ -1,4 +1,5 @@
-import { fetchData } from "./api.js"
+import { fetchData } from "./utils/api.js"
+import { shareEvent } from "./utils/share.js"
 
 function getEventId() {
     const params = new URLSearchParams(window.location.search)
@@ -43,7 +44,8 @@ function renderEvent(event) {
                 <div class="card-footer">
                     <div class="card-tickets">Available tickets: ${event.availableTickets}</div>
                     <div class="card-price">${event.price > 0 ? `Price: ${event.price.toFixed(2)}€` : 'Free'}</div>
-
+                </div>
+                <div class="card-button-container">
                     ${
                         role !== 'creator'
                             ?   (token 
@@ -52,6 +54,7 @@ function renderEvent(event) {
                                 )
                             :   ''
                     }
+                    <button class="card-button" onclick="shareEvent('${event._id}', '${event.title}')">🔗 Share </button>
                 </div>
                 <div id="participants"></div>
             </div>
@@ -102,5 +105,7 @@ async function loadParticipants(eventId) {
         alert('Failed to load participants')
     }
 }
+
+window.shareEvent = shareEvent
 
 loadEventDetails()

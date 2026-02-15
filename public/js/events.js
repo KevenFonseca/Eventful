@@ -1,4 +1,4 @@
-import { fetchData } from './api.js'
+import { fetchData } from './utils/api.js'
 
 // list events
 async function loadEvents() {
@@ -35,13 +35,13 @@ window.goToEventDetails = function(eventId) {
 
     if (!token) {
         // save event for redirect after login
-        localStorage.setItem('redirectAfterLogin', `/event.html?id=${eventId}`)
+        localStorage.setItem('redirectAfterLogin', `/event-details.html?id=${eventId}`)
         window.location.href = 'auth.html?mode=login'
         return
     }
 
     // user is logged in, go to event details
-    window.location.href = `/event.html?id=${eventId}`
+    window.location.href = `/event-details.html?id=${eventId}`
 }
 
 

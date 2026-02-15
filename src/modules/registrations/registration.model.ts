@@ -4,6 +4,8 @@ export interface IRegistration extends Document {
     participant: Types.ObjectId
     event: Types.ObjectId
     registeredAt: Date
+    code: string
+    isUsed: boolean
 }
 
 const RegistrationSchema = new Schema<IRegistration>(
@@ -18,9 +20,14 @@ const RegistrationSchema = new Schema<IRegistration>(
             ref: 'Event',
             required: true
         },
-        registeredAt: {
-            type: Date,
-            default: Date.now
+        code: {
+            type: String,
+            unique: true,
+            required: true
+        },
+        isUsed: {
+            type: Boolean,
+            default: false
         }
     },
     {

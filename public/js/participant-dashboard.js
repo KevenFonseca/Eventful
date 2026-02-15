@@ -1,33 +1,50 @@
-import { fetchData } from './api.js'
-import { requireAuth } from './require-auth.js'
+import { fetchData } from './utils/api.js'
+import { requireAuth } from './utils/require-auth.js'
+import { shareEvent } from './utils/share.js'
 
 requireAuth('participant')
 
-async function loadMyEvents() {
+async function loadMyRegistrations() {
     try {
-        const events = await fetchData('/events/my-events')
-        const container = document.getElementById('my-events')
+        const registration = await fetchData('/registrations/my')
+        const container = document.getElementById('registrations-container')
 
-        if (events.length === 0) {
-            container.innerHTML = '<p>You have no events.</p>'
+        if (registration.length === 0) {
+            container.innerHTML = '<p>You have no registered events.</p>'
             return
         }
 
-        container.innerHTML = events.map(event => `
+        container.innerHTML = registration.map(reg => `
             <div class="card">
-                <span class="card-tag">${event.category}</span>
-                <h3 class="card-title">${event.title}</h3>
+                <h3 class="card-title">${reg.event.title}</h3>
                 <div class="card-info">
-                    <p class="card-location">📍 ${event.location}</p>
-                    <p class="card-date">📅 ${new Date(event.date).toLocaleDateString('pt-PT', {timeZone: 'UTC'})}</p>
+                    <p class="card-location">📍 ${reg.event.location}</p>
+                    <p class="card-date">📅 ${new Date(reg.event.date).toLocaleDateString('pt-PT', {timeZone: 'UTC'})}</p>
                 </div>
-                <a href="event.html?id=${event._id}" class="card-button">View Details</a>
+                <p><strong>Status:</strong> ${reg.isUsed ? 'Used' : 'Valid'}</p>
+
+                <div class='card-button-container'>
+                    <button class="card-button" onclick="viewTicket('${reg._id}')">🎫 View Ticket</button>
+                    <button class="card-button" onclick="shareEvent('${reg.event._id}', '${reg.event.title}')">🔗 Share</button>
+                </div>
             </div>
         `).join('')
 
     } catch (error) {
-        alert(error.message)
+        console.error(error)
+        alert('Failed to load registrations')
     }
 }
 
-// loadMyEvents()
+window.viewTicket = function(id) {
+    window.location.href = `ticket.html?id=${id}`
+}
+
+window.shareEvent = function(eventId) {
+    // window.location.href = `share.html`
+    alert('Sharing feature coming soon')
+}
+
+window.shareEvent = shareEvent
+
+loadMyRegistrations()

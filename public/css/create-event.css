@@ -67,7 +67,7 @@ select {
     font-size: 1.4rem;
 }
 
-button {
+.submit-button {
     align-self: flex-start;
     margin-top: 2rem;
     padding: 0.8rem 1.5rem;

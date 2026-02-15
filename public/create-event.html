@@ -11,9 +11,7 @@
     
     <header>
         <a href="creator-dashboard.html" class="logo">← back</a>
-        <div class="user-area" id="user-area">
-            <div class="user-initials">KF</div>
-        </div>
+        <div class="user-area" id="user-area"></div>
     </header>
 
     <main>
@@ -56,12 +54,12 @@
             <label for="totalTickets">Total Tickets</label>
             <input type="number" id="totalTickets" name="totalTickets" min="1" required/>
 
-            <button type="submit">Create Event</button>
+            <button type="submit" class="submit-button">Create Event</button>
         </form>
     </main>
 
     <!-- scripts -->
-    <script src="js/auth-ui.js"></script>
+    <script src="js/utils/auth-ui.js"></script>
     <script type="module" src="js/create-event.js"></script>
 </body>
 </html>

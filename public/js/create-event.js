@@ -1,5 +1,5 @@
-import { fetchData } from "./api.js"
-import { requireAuth } from "./require-auth.js"
+import { fetchData } from "./utils/api.js"
+import { requireAuth } from "./utils/require-auth.js"
 
 requireAuth('creator')
 
@@ -47,7 +47,7 @@ form.addEventListener('submit', async (event) => {
         form.reset()
         customCategoryContainer.style.display = 'none'
 
-        window.location.href = 'my-events.html'
+        window.location.href = 'creator-dashboard.html'
     } catch (error) {
         alert(error.message)
     }

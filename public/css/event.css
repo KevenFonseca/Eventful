@@ -84,6 +84,12 @@ header {
     font-weight: bold;
 }
 
+.card-button-container {
+    display : flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
 .card-button {
     text-decoration: none;
     font-size: 1.2rem;

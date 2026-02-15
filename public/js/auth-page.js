@@ -1,4 +1,4 @@
-import { login, signup } from './auth.js'
+import { login, signup } from './utils/auth.js'
 
 // DOM elements
 const loginTab = document.getElementById('login-tab')
