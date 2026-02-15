@@ -6,6 +6,8 @@ export interface IRegistration extends Document {
     registeredAt: Date
     code: string
     isUsed: boolean
+    reminderHours: number[]
+    remindersSent: number[]
 }
 
 const RegistrationSchema = new Schema<IRegistration>(
@@ -28,6 +30,14 @@ const RegistrationSchema = new Schema<IRegistration>(
         isUsed: {
             type: Boolean,
             default: false
+        },
+        reminderHours: {
+            type: [Number],
+            default: []
+        },
+        remindersSent: {
+            type: [Number],
+            default: []
         }
     },
     {

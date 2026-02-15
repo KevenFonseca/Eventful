@@ -21,4 +21,7 @@ router.get('/:id/participants', authMiddleware, authorize(UserRole.CREATOR), reg
 // Get QR code
 router.get('/:id/qr', authMiddleware, authorize(UserRole.PARTICIPANT), registrationHandler.getRegistrationQRHandler)
 
+// Setting event reminder
+router.put('/:id/reminders', authMiddleware, authorize(UserRole.PARTICIPANT), registrationHandler.updateReminderHandler)
+
 export default router

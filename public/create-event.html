@@ -43,7 +43,7 @@
             </div>
 
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
+            <input type="datetime-local" id="date" name="date" required>
 
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" required>
@@ -53,6 +53,9 @@
 
             <label for="totalTickets">Total Tickets</label>
             <input type="number" id="totalTickets" name="totalTickets" min="1" required/>
+
+            <label for="defaultReminderHours">Default Reminders (hours before event, comma separated)</label>
+            <input type="text" id="defaultReminderHours" placeholder="24 (1day), 168 (1week)">
 
             <button type="submit" class="submit-button">Create Event</button>
         </form>

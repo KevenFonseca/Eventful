@@ -21,7 +21,7 @@ export const getAvailableEvents = async () => {
     }
 
     return EventModel.find(query)
-        .select('-availableTickets -createdAt -updatedAt -__v')
+        .select('-availableTickets -reminderHours -createdAt -updatedAt -__v')
         .sort({ date: 1 })
         // .skip(0)
         // .limit(10)
@@ -31,7 +31,7 @@ export const getMyEvents = async (creatorId: string) => {
     return EventModel.find({ 
         creator: new Types.ObjectId(creatorId) 
     })
-        .select('-availableTickets -creator -createdAt -updatedAt -__v')
+        .select('-availableTickets -reminderHours -creator -createdAt -updatedAt -__v')
         .sort({ date: 1 })
 }
 

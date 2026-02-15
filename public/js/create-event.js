@@ -27,6 +27,10 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault()
 
     const category = categorySelect.value === 'Other' ? customCategoryInput.value.trim() : categorySelect.value
+    
+    const defaultReminderInput = document.getElementById('defaultReminderHours').value
+    const defaultReminderHours = defaultReminderInput.split(',').map(h => parseInt(h.trim())).filter(h => Number.isInteger(h) && h > 0)
+
     const eventData = {
         title: document.getElementById('title').value.trim(),
         description: document.getElementById('description').value.trim(),
@@ -34,7 +38,8 @@ form.addEventListener('submit', async (event) => {
         date: new Date(document.getElementById('date').value),
         location: document.getElementById('location').value.trim(),
         price: parseFloat(document.getElementById('price').value) || 0,
-        totalTickets: parseInt(document.getElementById('totalTickets').value)
+        totalTickets: parseInt(document.getElementById('totalTickets').value),
+        reminderHours: defaultReminderHours
     }
 
     try {

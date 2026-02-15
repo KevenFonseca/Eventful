@@ -8,7 +8,12 @@ import authRoutes from './modules/auth/auth.routes.js'
 import eventRoutes from './modules/events/event.routes.js'
 import registration from './modules/registrations/registration.routes.js'
 
+// cron jobs
+import { eventsReminder } from './jobs/remider.jobs.js'
+
 const app = express()
+
+eventsReminder()
 
 app.use(cors())
 

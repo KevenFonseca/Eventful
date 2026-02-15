@@ -66,7 +66,7 @@ export const getEventParticipants = async (eventId: string, creatorId: string) =
 export const getMyRegistrations = async (participantId: string) => {
     return RegistrationModel.find({participant: participantId})
         .populate('event', 'title date location')
-        .select('-code -participant -createdAt -updatedAt -__v')
+        .select('-code -participant -reminderHours -remindersSent -createdAt -updatedAt -__v')
         .sort({ createdAt: -1})
 }
 
@@ -75,11 +75,25 @@ export const getRegistrationById = async (registrationId: string, participantId:
 
     const registration = await RegistrationModel.findById(registrationId)
         .populate('event', 'title date location')
-        .select('-createdAt -updatedAt -__v')
+        .select('-remiderHours -remindersSent -createdAt -updatedAt -__v')
 
     if (!registration) throw new Error('Registration not found')
 
-    if (registration.participant.toString() !== participantId) throw new Error('Unauthorized')
+    if (registration.participant.toString() !== participantId) throw new Error('Forbidden')
 
     return registration
+}
+
+export const setUpdateReminder = async (registrationId: string, participantId: string, reminderHours: number[]) => {
+    if (!Types.ObjectId.isValid(registrationId)) throw new Error('Invalid registrationId')
+
+    const registration = await RegistrationModel.findById(registrationId)
+
+    if (!registration) throw new Error('Registration not found')
+    
+    if (registration.participant.toString() !== participantId) throw new Error('Forbidden')
+
+    registration.reminderHours = reminderHours
+
+    await registration.save()
 }

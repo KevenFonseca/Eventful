@@ -8,6 +8,7 @@ export const createEventSchema = z.object({
     location: z.string().min(3),
     price: z.coerce.number().int().nonnegative(),
     totalTickets: z.coerce.number().int().positive(),
+    reminderHours: z.array(z.number()).nonempty()
 })
 
 export type CreateEventDTO = z.infer<typeof createEventSchema>

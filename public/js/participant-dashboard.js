@@ -1,6 +1,7 @@
 import { fetchData } from './utils/api.js'
 import { requireAuth } from './utils/require-auth.js'
 import { shareEvent } from './utils/share.js'
+import { setReminder } from './utils/reminder.js'
 
 requireAuth('participant')
 
@@ -27,6 +28,12 @@ async function loadMyRegistrations() {
                     <button class="card-button" onclick="viewTicket('${reg._id}')">🎫 View Ticket</button>
                     <button class="card-button" onclick="shareEvent('${reg.event._id}', '${reg.event.title}')">🔗 Share</button>
                 </div>
+
+                <div class="reminder-section">
+                    <label for="reminder-${reg._id}">Set Reminders (hours before event, comma separated)</label>
+                    <input type="text" id="reminder-${reg._id}" placeholder="24, 72, 128">
+                    <button class="card-button" onclick="setReminder('${reg._id}')">💾 Save Reminder</button>
+                </div>
             </div>
         `).join('')
 
@@ -41,10 +48,11 @@ window.viewTicket = function(id) {
 }
 
 window.shareEvent = function(eventId) {
-    // window.location.href = `share.html`
-    alert('Sharing feature coming soon')
+    window.location.href = 'share.html'
 }
 
 window.shareEvent = shareEvent
+
+window.setReminder = setReminder
 
 loadMyRegistrations()

@@ -9,6 +9,7 @@ export interface IEvent extends Document {
     price: number
     totalTickets: number
     availableTickets: number
+    reminderHours: number[]
     creator: Types.ObjectId
 }
 
@@ -46,6 +47,11 @@ const EventSchema = new Schema<IEvent>(
         availableTickets: {
             type: Number,
             required: true,
+        },
+        reminderHours: {
+            type: [Number],
+            default: [],
+            required: false
         },
         creator: {
             type: Schema.Types.ObjectId,

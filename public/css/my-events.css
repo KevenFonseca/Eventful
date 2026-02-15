@@ -119,3 +119,24 @@ h3 {
 .card > p {
     font-size: 1.2rem;
 }
+
+.reminder-section {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reminder-section label {
+    font-size: 1.4rem;
+}
+
+.reminder-section input {
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    border: 1px soli var(--border);
+    border-radius: 4px;
+    background: var(--bg-dark);
+    color: var(--text-main);
+}

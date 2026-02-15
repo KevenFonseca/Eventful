@@ -79,9 +79,7 @@ export const getMyRegistrationHandler = async (req: AuthRequest, res: Response) 
 
 export const getRegistrationByIdHandler = async (req: AuthRequest, res: Response) => {
     try {
-        if (!req.user) {
-            return res.status(401).json({ error: 'Unathorized'})
-        }
+        if (!req.user) return res.status(401).json({ error: 'Unathorized'})
 
         const registration = await registrationService.getRegistrationById(req.params.id as string, req.user.id)
 
@@ -91,10 +89,32 @@ export const getRegistrationByIdHandler = async (req: AuthRequest, res: Response
         if (error.message === 'Registration not found') {
             return res.status(404).json({ error: error.message })
         }
-        if (error.message === 'Unauthorized') {
+        if (error.message === 'Forbidden') {
             return res.status(403).json({ error: error.message })
         }
 
         return res.status(400).json({ error: error.message })
     }
 } 
+
+export const updateReminderHandler = async (req: AuthRequest, res: Response) => {
+    try {
+        if (!req.user) return res.status(401).json({ error: 'Unathorized'})
+
+        const { reminderHours } = req.body
+            
+        await registrationService.setUpdateReminder(req.params.id as string, req.user.id, reminderHours)
+
+        return res.status(200).json({ message: 'Reminders updated successfully' })
+
+    } catch (error: any) {
+        if (error.message === 'Registration not found') {
+            return res.status(404).json({ error: error.message })
+        }
+        if (error.message === 'Forbidden') {
+            return res.status(403).json({ error: error.message })
+        }
+
+        return res.status(400).json({ error: error.message })
+    }
+}
