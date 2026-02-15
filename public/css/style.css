@@ -25,11 +25,40 @@ html {
 }
 
 body {
+    width: 100%;
     font-family: 'Poppins', sans-serif;
     background: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    padding: 0 5%;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border);
+    opacity: 0.9;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 
 /* ------------------------------------------------------------ */
 .user-area {
@@ -84,4 +113,22 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+
+
+@media (max-width: 500px) {
+    
+    .nav-bar {
+        gap: 0.5rem;
+    }
+
+    .user-area {
+        gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .logout-button {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
 }
